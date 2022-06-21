@@ -55,8 +55,8 @@ function getNewQuestion() {
    question.innerText = currentQuestion.question;
 
    choices.forEach(); {
-    const number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
+    const number = choices.dataset["number"];
+    choices.innerText = currentQuestion["choice" + number];
    }
 };
 
