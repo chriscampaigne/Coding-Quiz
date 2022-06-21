@@ -1,0 +1,15 @@
+.choice-container {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: darkblue;
+    color: white;
+}
+
+.choice-prefix {
+    padding: 24px 5px;
+}
+
+.choice-text {
+    padding: 24px 12px;
+}
