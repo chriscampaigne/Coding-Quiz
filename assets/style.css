@@ -1,0 +1,27 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 20px 0;
+    width: 350px;
+    border: solid;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: darkblue;
+}
