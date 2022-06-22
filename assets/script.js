@@ -41,23 +41,60 @@ var questions = [
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
 
-function startGame() {
+startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions]
     getNewQuestion();
 }
 
-function getNewQuestion() {
-    questionCounter++;
-   const questionIndex = Math.floor(Math.random() + availableQuestions.length);
-   currentQuestion = availableQuestions[questionIndex];
-   question.innerText = currentQuestion.question;
+getNewQuestion = () => {
+   questionCounter++
+   const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+   // keep track of what question we are on //
+   currentQuestion = availableQuestions[questionsIndex]
+   // know what question to ask //
+   question.innerText = currentQuestion.question 
 
-   choices.forEach(); {
-    const number = choices.dataset["number"];
-    choices.innerText = currentQuestion["choice" + number];
+   choices.forEach(choice => {
+    const number = choice.dataset["number"]
+    choice.innerText = currentQuestion["choice" + number]
+
+    })
+
+    availableQuestions.splice(questionsIndex, 1)
+
+    acceptingAnswers = true
+
    }
-};
+
+   choices.forEach(choice => {
+    addEventListener("click", e => { 
+        // if its not equal to accepting answers we return //
+        if(!acceptingAnswers) return
+        acceptingAnswers = false
+        const selectedChoice = e.target
+        const selectedAnswer = selectedChoice.dataset["number"]
+
+        var classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+        if(classToApply === 'correct') {
+            incrementScore(CORRECT_BONUS)
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply)
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply)
+            getNewQuestion()
+
+            }, 1000)
+        })
+    })
+
+    incrementScore = num => {
+        score +=num
+        scoreText.innerText = score
+    }
+   
 
 startGame();
